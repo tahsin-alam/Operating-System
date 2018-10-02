@@ -1,0 +1,10 @@
+//Tahsin Alam
+//Part 2 interpretation
+
+
+The code in part two have two children processes and two parent processes in total. The pareant program creates the first child called q. If the parent can successfully create the child q, then child q or process q will create another child called process R. If the q process failed to create the child process R, then it will execute its code.
+
+	There were several behaviors observed when running the code multiple time with no changes of the execution order. Everytime the code generated a new process ID  for the parent and its child. The fork() system call seems to work until the child is created and it terminates once its behavior has finished.The second fork() system call also ran at the same way to execute. The child has a copy of the parents data in its own memory space. Any changes made to certain values in the parent process remains only in the parent process and same goes for the child process. The value of b is originally 25 and once the parent process executes its behavior then b becomes 30. Once the first child q process is created, its parent is continuing working on executing the code at the same instance of it child.  The child q has b equals to it original value of 25 and then changes to 45. Its parent process still has b equal to 30. 	
+
+	The child process q creates it own child called process R, so q becomes the parent of R. Now those two process are running through the same code at an instance. The parent q runs its behavior and a has a value of 35 during its process. The parent of q has the value a still equal to 10.  The new process R has its data copied from q, which results in b having its original value of 25 since it has not manipulated b in any way during its process. However, the value a is different and it is 905 for the R process. The q process has a equal to 35. The parent process still has the value of 10 for a.
+ 
